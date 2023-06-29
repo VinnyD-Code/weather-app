@@ -6,8 +6,17 @@ const input = document.querySelector('.search input');
 const weatherIcon = document.querySelector('.weather-icon');
 
 async function checkWeather(city) {
+    
     const res = await fetch(apiUrl + city + `&appid=${apiKey}`);
+    
+    if (res.status === 404) {
+        alert("City not found. Please enter a valid city name.");
+        return;
+    }
+    
     let data = await res.json();
+
+    
 
     let fahrenheit = Math.round((data.main.temp - 273.15) * 9 / 5 + 32);
     let miles = (data.wind.speed / 1.60934);
