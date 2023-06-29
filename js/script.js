@@ -9,7 +9,6 @@ async function checkWeather(city) {
     const res = await fetch(apiUrl + city + `&appid=${apiKey}`);
     let data = await res.json();
 
-    console.log(data);
     let fahrenheit = Math.round((data.main.temp - 273.15) * 9 / 5 + 32);
     let miles = (data.wind.speed / 1.60934);
     miles = parseFloat(miles.toFixed(2));
