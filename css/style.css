@@ -14,7 +14,7 @@ body {
     width: 90%;
     align-items: flex-start;
     justify-content: center;
-    background: linear-gradient(135deg, #00feba, #5b548a);
+    background: linear-gradient(135deg, #0080ff, #00bfff);
     margin: 100px auto 0;
     border-radius: 20px;
     padding: 40px 35px;
@@ -104,5 +104,11 @@ body {
 }
 
 .weather {
-    display: none;
-}
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+  
+  .weather.show {
+    max-height: 500px; /* Adjust the height based on your content */
+  }
