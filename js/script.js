@@ -3,6 +3,7 @@ const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
 const searchBtn = document.querySelector('.search button');
 const input = document.querySelector('.search input');
+const weatherIcon = document.querySelector('.weather-icon');
 
 async function checkWeather(city) {
     const res = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -17,6 +18,24 @@ async function checkWeather(city) {
     document.querySelector(".temp").innerHTML = fahrenheit + '&degF'
     document.querySelector(".wind").innerHTML = miles + ' mph';
     document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
+
+    if (data.weather[0].main === 'Clouds') {
+        weatherIcon.src = "img/clouds.png"
+    }
+    else if (data.weather[0].main === 'Clear') {
+        weatherIcon.src = "img/clear.png"
+    }
+    else if (data.weather[0].main === 'Rain') {
+        weatherIcon.src = "img/rain.png"
+    }
+    else if (data.weather[0].main === 'Drizzle') {
+        weatherIcon.src = "img/drizzle.png"
+    }
+    else if (data.weather[0].main === 'Mist') {
+        weatherIcon.src = "img/mist.png"
+    }
+
+    document.querySelector(".weather").style.display = "block";
 }
 
 searchBtn.addEventListener('click', () => {
